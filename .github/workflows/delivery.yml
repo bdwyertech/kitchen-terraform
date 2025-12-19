@@ -19,7 +19,7 @@ jobs:
           cache-version:
             "1-os-${{ matrix.operating-system }}-rv-${{ matrix.ruby-version }}"
       - name: Upload Bundler Lockfile
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name:
             bundler-lockfile-os-${{ matrix.operating-system }}-rv-${{
@@ -115,7 +115,7 @@ jobs:
           gem cert --add certs/gem-public_cert.pem
           gem build kitchen-terraform.gemspec --strict --output kitchen-terraform.gem
       - name: Upload Ruby Gem
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: ruby-gem
           path: kitchen-terraform.gem
