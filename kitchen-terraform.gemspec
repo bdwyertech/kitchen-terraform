@@ -38,7 +38,7 @@ require "rubygems"
   specification.add_development_dependency "reek", "~> 6.1"
   # webrick is implicitly required by yard
   specification.add_development_dependency "webrick", "~> 1.7"
-  specification.add_runtime_dependency "delegate", "~> 0.3.0"
+  specification.add_runtime_dependency "delegate", ">= 0.3.0"
   specification.add_runtime_dependency "dry-validation", "~> 1.6"
   specification.add_runtime_dependency "inspec", "~> 5.21", ">= 5.21.29"
   specification.add_runtime_dependency "json", "~> 2.3"
