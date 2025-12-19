@@ -16,6 +16,7 @@
 
 require "kitchen/terraform/command_flag/backend_config"
 require "kitchen/terraform/command_flag/color"
+require "kitchen/terraform/command_flag/get"
 require "kitchen/terraform/command_flag/lock_timeout"
 require "kitchen/terraform/command_flag/plugin_dir"
 require "kitchen/terraform/command_flag/upgrade"
@@ -42,6 +43,7 @@ module Kitchen
           # @option config [Hash{String=>String}] :backend_configurations Terraform backend configuration arguments to
           #   complete a partial backend configuration.
           # @option config [Boolean] :color a toggle of colored output from the Terraform client.
+          # @option config [Boolean] :get a toggle of downloading modules.
           #   on the state to be obtained during operations.
           # @option config [String] :plugin_directory the pathname of the directory which contains
           #   customized Terraform provider plugins to install in place of the official Terraform provider plugins.
@@ -52,6 +54,7 @@ module Kitchen
               :backend_configurations
             )
             self.color = ::Kitchen::Terraform::CommandFlag::Color.new enabled: config.fetch(:color)
+            self.get = ::Kitchen::Terraform::CommandFlag::Get.new enabled: config.fetch(:get)
             self.plugin_dir = ::Kitchen::Terraform::CommandFlag::PluginDir.new pathname: config.fetch(
               :plugin_directory
             )
@@ -64,7 +67,7 @@ module Kitchen
             "-backend=true " \
             "#{backend_config} " \
             "-force-copy=true " \
-            "-get=true " \
+            "#{get} " \
             "-input=false " \
             "#{color} " \
             "#{plugin_dir} " \
@@ -76,6 +79,7 @@ module Kitchen
           attr_accessor(
             :backend_config,
             :color,
+            :get,
             :lock,
             :lock_timeout,
             :options,

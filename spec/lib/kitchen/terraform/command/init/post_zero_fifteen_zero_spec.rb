@@ -34,6 +34,7 @@ require "kitchen/terraform/command/init/post_zero_fifteen_zero"
       plugin_directory: "/plugins",
       root_module_directory: "/root-module",
       upgrade_during_init: true,
+      get: true,
     }
   end
 

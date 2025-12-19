@@ -19,6 +19,7 @@ require "kitchen/terraform/raise/action_failed"
 require "kitchen/terraform/config_attribute/backend_configurations"
 require "kitchen/terraform/config_attribute/client"
 require "kitchen/terraform/config_attribute/color"
+require "kitchen/terraform/config_attribute/get"
 require "kitchen/terraform/config_attribute/command_timeout"
 require "kitchen/terraform/config_attribute/lock_timeout"
 require "kitchen/terraform/config_attribute/lock"
@@ -148,6 +149,8 @@ module Kitchen
       deprecate_config_for :client, "use transport.client instead"
 
       include ::Kitchen::Terraform::ConfigAttribute::Color
+
+      include ::Kitchen::Terraform::ConfigAttribute::Get
 
       include ::Kitchen::Terraform::ConfigAttribute::CommandTimeout
       deprecate_config_for :command_timeout, "use transport.command_timeout instead"
