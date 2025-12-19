@@ -47,5 +47,5 @@ require "rubygems"
   specification.cert_chain = ["certs/gem-public_cert.pem"]
   specification.required_ruby_version = [">= 3.0", "< 4.0"]
   specification.requirements = ["Terraform >= v0.11.4, < v2.0.0"]
-  specification.signing_key = "certs/gem-private_key.pem" if $PROGRAM_NAME =~ /gem\z/
+  # specification.signing_key = "certs/gem-private_key.pem" if $PROGRAM_NAME =~ /gem\z/
 end
